@@ -15,7 +15,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$stmt = $conn->prepare("DELETE FROM nama_tabel WHERE ogc_fid = ?");
+$stmt = $conn->prepare("DELETE FROM titik_perumahan WHERE ogc_fid = ?");
 $stmt->bind_param("i", $id);
 
 if ($stmt->execute()) {

@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 }
 
 $stmt = $conn->prepare(
-    "INSERT INTO nama_tabel (namobj, koor_x, koor_y, wadmkc)
+    "INSERT INTO titik_perumahan (namobj, koor_x, koor_y, wadmkc)
      VALUES (?, ?, ?, ?)"
 );
 $stmt->bind_param("sdds", $namobj, $koor_x, $koor_y, $wadmkc);
