@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Form Input</h2>
+
+<form action="input.php" onsubmit="return validateForm(event)" method="post">
+  <label for="nam">Nama Objek:</label><br>
+  <input type="text" id="nam" name="namobj" value=""><br>
+
+  <label for="x">Koordinat X (Longitude):</label><br>
+  <input type="text" id="x" name="koor_x" value=""><br>
+
+  <label for="y">Koordinat Y (Latitude):</label><br>
+  <input type="text" id="y" name="koor_y" value=""><br>
+
+  <label for="kec">Kecamatan:</label><br>
+  <input type="text" id="kec" name="wadmkc" value=""><br><br>
+
+  <input type="submit" value="Submit">
+</form>
+
+<p id="informasi" style="color:red;"></p>
+
+<script>
+function validateForm(event) {
+  let nam = document.getElementById("nam").value.trim();
+  let x   = document.getElementById("x").value.trim();
+  let y   = document.getElementById("y").value.trim();
+  let kec = document.getElementById("kec").value.trim();
+  let text = "";
+
+  if (nam === "") {
+    text += "Nama objek tidak boleh kosong.<br>";
+  }
+  if (x === "" || isNaN(x) || x < -180 || x > 180) {
+    text += "Koordinat X harus angka antara -180 sampai 180.<br>";
+  }
+  if (y === "" || isNaN(y) || y < -90 || y > 90) {
+    text += "Koordinat Y harus angka antara -90 sampai 90.<br>";
+  }
+  if (kec === "" || !/^[A-Za-z\s]+$/.test(kec)) {
+    text += "Kecamatan harus diisi dan hanya berisi huruf.<br>";
+  }
+
+  document.getElementById("informasi").innerHTML = text;
+
+  if (text !== "") {
+    event.preventDefault();
+    return false;
+  }
+  return true;
+}
+</script>
+</body>
+</html>
