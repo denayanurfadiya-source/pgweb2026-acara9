@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 }
 
 $stmt = $conn->prepare(
-    "UPDATE nama_tabel
+    "UPDATE titik_perumahan
      SET namobj = ?, koor_x = ?, koor_y = ?, wadmkc = ?
      WHERE ogc_fid = ?"
 );
